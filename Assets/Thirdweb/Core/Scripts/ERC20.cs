@@ -238,6 +238,7 @@ namespace Thirdweb
             }
             else
             {
+                Debug.Log("This is Claim function");
                 return await ClaimTo(await ThirdwebManager.Instance.SDK.Wallet.GetAddress(), amount);
             }
         }
@@ -254,6 +255,7 @@ namespace Thirdweb
             else
             {
                 var claimCondition = await ClaimConditions.GetActive();
+                Debug.Log("HI");
                 var decimals = await TransactionManager.ThirdwebRead<TokenERC20Contract.DecimalsFunction, TokenERC20Contract.DecimalsOutputDTO>(
                     contractAddress,
                     new TokenERC20Contract.DecimalsFunction()
@@ -387,6 +389,7 @@ namespace Thirdweb
                     contractAddress,
                     new DropERC20Contract.GetActiveClaimConditionIdFunction() { }
                 );
+                Debug.Log("Hi 2");
 
                 var data = await TransactionManager.ThirdwebRead<DropERC20Contract.GetClaimConditionByIdFunction, DropERC20Contract.GetClaimConditionByIdOutputDTO>(
                     contractAddress,

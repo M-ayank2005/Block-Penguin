@@ -108,45 +108,20 @@ namespace Thirdweb.Examples
 
         public void ConnectEmail()
         {
-            string input = emailInput.text;
-            bool isEmail = Utils.IsValidEmail(input);
-
-            WalletConnection wc;
-            if (isEmail)
-            {
-                wc = useSmartWallets
-                    ? new WalletConnection(
-                        provider: WalletProvider.SmartWallet,
-                        chainId: BigInteger.Parse(_currentChainData.chainId),
-                        email: emailInput.text,
-                        authOptions: new AuthOptions(AuthProvider.EmailOTP),
-                        personalWallet: WalletProvider.EmbeddedWallet
-                    )
-                    : new WalletConnection(
-                        provider: WalletProvider.EmbeddedWallet,
-                        chainId: BigInteger.Parse(_currentChainData.chainId),
-                        email: emailInput.text,
-                        authOptions: new AuthOptions(AuthProvider.EmailOTP)
-                    );
-            }
-            else
-            {
-                wc = useSmartWallets
-                    ? new WalletConnection(
-                        provider: WalletProvider.SmartWallet,
-                        chainId: BigInteger.Parse(_currentChainData.chainId),
-                        phoneNumber: input,
-                        authOptions: new AuthOptions(AuthProvider.PhoneOTP),
-                        personalWallet: WalletProvider.EmbeddedWallet
-                    )
-                    : new WalletConnection(
-                        provider: WalletProvider.EmbeddedWallet,
-                        chainId: BigInteger.Parse(_currentChainData.chainId),
-                        phoneNumber: input,
-                        authOptions: new AuthOptions(AuthProvider.PhoneOTP)
-                    );
-            }
-
+            var wc = useSmartWallets
+                ? new WalletConnection(
+                    provider: WalletProvider.SmartWallet,
+                    chainId: BigInteger.Parse(_currentChainData.chainId),
+                    email: emailInput.text,
+                    authOptions: new AuthOptions(AuthProvider.EmailOTP),
+                    personalWallet: WalletProvider.EmbeddedWallet
+                )
+                : new WalletConnection(
+                    provider: WalletProvider.EmbeddedWallet,
+                    chainId: BigInteger.Parse(_currentChainData.chainId),
+                    email: emailInput.text,
+                    authOptions: new AuthOptions(AuthProvider.EmailOTP)
+                );
             Connect(wc);
         }
 
@@ -165,7 +140,7 @@ namespace Thirdweb.Examples
             {
                 _address = null;
                 _password = null;
-                await ThirdwebManager.Instance.SDK.Wallet.Disconnect(endSession: false);
+                await ThirdwebManager.Instance.SDK.Wallet.Disconnect();
                 onDisconnected.Invoke();
             }
             catch (System.Exception e)
@@ -271,13 +246,13 @@ namespace Thirdweb.Examples
         {
             ThirdwebDebug.Log("Exporting wallet...");
             string json = await ThirdwebManager.Instance.SDK.Wallet.Export(_password);
-            await Utils.CopyToClipboard(json);
+            GUIUtility.systemCopyBuffer = json;
             ThirdwebDebug.Log($"Copied wallet to clipboard: {json}");
         }
 
-        public async void CopyAddress()
+        public void CopyAddress()
         {
-            await Utils.CopyToClipboard(_address);
+            GUIUtility.systemCopyBuffer = _address;
             ThirdwebDebug.Log($"Copied address to clipboard: {_address}");
         }
 

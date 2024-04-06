@@ -10996,7 +10996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ea80251371e9049b1c432bdc854bb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniGameSceneName: FlappyScene
+  miniGameSceneName: GemScene
 --- !u!1001 &420730628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15946,7 +15946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play Minigame
+  m_Text: Play Flappy Bird
 --- !u!222 &817665001
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27466,7 +27466,7 @@ SpriteRenderer:
   m_SortingLayerID: -105541197
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 285da17d7619bd7448ff651690c46523, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 801a92902f149c14b908dfe09f1fe282, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -29042,7 +29042,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1503135464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30491,12 +30491,12 @@ PrefabInstance:
     - target: {fileID: 520568572014978776, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 314.6472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 520568572014978776, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 177.3236
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 520568572014978776, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
@@ -30556,7 +30556,7 @@ PrefabInstance:
     - target: {fileID: 799103650124067390, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.1612404
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 839721984844142348, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
@@ -30846,17 +30846,17 @@ PrefabInstance:
     - target: {fileID: 3701638385976591129, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 314.6472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3701638385976591129, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 177.3236
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3701638385976591129, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -128.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3778577666444309640, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
@@ -31311,7 +31311,7 @@ PrefabInstance:
     - target: {fileID: 6410010646157259483, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 183.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6410010646157259483, guid: 897cda79fe3077c4fbc0fb5916d433ee,
         type: 3}
@@ -34241,7 +34241,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play Minigame
+  m_Text: Play Gem Game
 --- !u!222 &1758819269
 CanvasRenderer:
   m_ObjectHideFlags: 0

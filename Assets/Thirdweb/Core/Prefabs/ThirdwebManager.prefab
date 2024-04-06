@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d9559a79e304f44b5ac4d726f1ee68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeChain: arbitrum-sepolia
+  activeChain: mumbai
   supportedChains:
   - identifier: ethereum
     chainId: 1
@@ -82,7 +82,7 @@ MonoBehaviour:
   - identifier: binance-testnet
     chainId: 97
     rpcOverride: 
-  clientId: 
+  clientId: 80001
   initializeOnAwake: 1
   showDebugLogs: 1
   bundleIdOverride: 
@@ -97,10 +97,16 @@ MonoBehaviour:
   forwarderDomainOverride: 
   forwaderVersionOverride: 
   walletConnectProjectId: 
+  walletConnectEnableExplorer: 0
   walletConnectExplorerRecommendedWalletIds: []
+  walletConnectWalletImages: []
+  walletConnectDesktopWallets: []
+  walletConnectMobileWallets: []
+  walletConnectThemeMode: 
   factoryAddress: 
   gasless: 0
-  deployOnSign: 0
+  erc20PaymasterAddress: 
+  erc20TokenAddress: 
   bundlerUrl: 
   paymasterUrl: 
   entryPointAddress: 

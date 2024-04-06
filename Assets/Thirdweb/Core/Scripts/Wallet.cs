@@ -11,6 +11,7 @@ using Nethereum.Signer.EIP712;
 using Newtonsoft.Json.Linq;
 using Nethereum.Hex.HexTypes;
 using System.Linq;
+using Nethereum.RPC.Eth.Transactions;
 
 namespace Thirdweb
 {
@@ -895,7 +896,8 @@ namespace Thirdweb
                 if (string.IsNullOrEmpty(transactionRequest.to))
                     throw new UnityException("Please specify a to address.");
 
-                transactionRequest.from ??= await GetAddress();
+                if (transactionRequest.from == null)
+                    transactionRequest.from = await GetAddress();
 
                 var input = new Nethereum.RPC.Eth.DTOs.TransactionInput(
                     string.IsNullOrEmpty(transactionRequest.data) ? null : transactionRequest.data,
@@ -906,8 +908,20 @@ namespace Thirdweb
                     string.IsNullOrEmpty(transactionRequest.value) ? new HexBigInteger(0) : new HexBigInteger(BigInteger.Parse(transactionRequest.value))
                 );
 
-                var tx = new Transaction(input);
-                return await tx.Send();
+                if (
+                    ThirdwebManager.Instance.SDK.Session.ActiveWallet.GetSignerProvider() == WalletProvider.LocalWallet
+                    && ThirdwebManager.Instance.SDK.Session.ActiveWallet.GetProvider() != WalletProvider.SmartWallet
+                )
+                {
+                    if (input.Gas == null)
+                        input.Gas = await ThirdwebManager.Instance.SDK.Session.Web3.Eth.TransactionManager.EstimateGasAsync(input);
+                    return await ThirdwebManager.Instance.SDK.Session.Web3.Eth.TransactionManager.SendTransactionAsync(input);
+                }
+                else
+                {
+                    var ethSendTx = new EthSendTransaction(ThirdwebManager.Instance.SDK.Session.Web3.Client);
+                    return await ethSendTx.SendRequestAsync(input);
+                }
             }
         }
 
@@ -951,7 +965,6 @@ namespace Thirdweb
         public BigInteger chainId;
         public string password;
         public string email;
-        public string phoneNumber;
         public WalletProvider personalWallet;
         public AuthOptions authOptions;
         public string smartWalletAccountOverride;
@@ -972,7 +985,6 @@ namespace Thirdweb
             BigInteger chainId,
             string password = null,
             string email = null,
-            string phoneNumber = null,
             WalletProvider personalWallet = WalletProvider.LocalWallet,
             AuthOptions authOptions = null,
             string smartWalletAccountOverride = null
@@ -982,7 +994,6 @@ namespace Thirdweb
             this.chainId = chainId;
             this.password = password;
             this.email = email;
-            this.phoneNumber = phoneNumber;
             this.personalWallet = personalWallet;
             this.authOptions = authOptions ?? new AuthOptions(authProvider: AuthProvider.EmailOTP, jwtOrPayload: null, encryptionKey: null);
             this.smartWalletAccountOverride = smartWalletAccountOverride;
@@ -1065,10 +1076,5 @@ namespace Thirdweb
         /// Custom Authentication Flow, checks payload against developer-set Auth Endpoint.
         /// </summary>
         AuthEndpoint,
-
-        /// <summary>
-        /// Phone Number OTP Flow.
-        /// </summary>
-        PhoneOTP
     }
 }

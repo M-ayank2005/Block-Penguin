@@ -553,13 +553,6 @@ namespace Thirdweb
             return unixTimestamp.ToString();
         }
 
-        public async static Task<BigInteger> GetLegacyGasPriceAsync(BigInteger chainId)
-        {
-            var web3 = GetWeb3(chainId);
-            var gasPrice = (await web3.Eth.GasPrice.SendRequestAsync()).Value;
-            return BigInteger.Multiply(gasPrice, 10) / 9;
-        }
-
         public async static Task<GasPriceParameters> GetGasPriceAsync(BigInteger chainId)
         {
             BigInteger? priorityOverride = null;
@@ -726,35 +719,12 @@ namespace Thirdweb
             return sha3.CalculateHash(message);
         }
 
-        public static bool IsValidEmail(string email)
-        {
-            var emailRegex = new System.Text.RegularExpressions.Regex(@"^\S+@\S+\.\S+$");
-            return emailRegex.IsMatch(email.Replace("+", ""));
-        }
-
         public static string GenerateRandomString(int v)
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var random = new System.Random();
             var result = new string(Enumerable.Repeat(chars, v).Select(s => s[random.Next(s.Length)]).ToArray());
             return result;
-        }
-
-        public static async Task<bool> CopyToClipboard(string text)
-        {
-            try
-            {
-                if (IsWebGLBuild())
-                    await Bridge.CopyBuffer(text);
-                else
-                    GUIUtility.systemCopyBuffer = text;
-                return true;
-            }
-            catch (Exception e)
-            {
-                ThirdwebDebug.LogWarning($"Failed to copy to clipboard: {e}");
-                return false;
-            }
         }
     }
 }
