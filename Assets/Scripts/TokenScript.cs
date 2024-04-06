@@ -86,17 +86,17 @@ public class TokenScript : MonoBehaviour
             Contract contract = ThirdwebManager.Instance.SDK.GetContract(DROP_ERC20_CONTRACT);
             Debug.Log(contract.ToString());
             HasNotClaimedState.SetActive(false);
-            ClaimingState.SetActive(true);
-            var tokensToMint = gemsToClaim.ToString();
+            // ClaimingState.SetActive(true);
+            // var tokensToMint = gemsToClaim.ToString();
 
-            Debug.Log(tokensToMint);
+            //Debug.Log(tokensToMint);
             // var tx = await contract.ERC20.Claim(gemsToClaim.ToString());
             // var receipt = tx.receipt;
-            var results = await contract.ERC20.Transfer("0x04aaf3463E0EfB2563eAfB8B8F6A0872617E5fe7", tokensToMint);
-            Debug.Log("ERC20 minted");
+            // var results = await contract.ERC20.Transfer("0x04aaf3463E0EfB2563eAfB8B8F6A0872617E5fe7", tokensToMint);
+            //Debug.Log("ERC20 minted");
             // Debug.Log(receipt);
             // GetTokenBalance();
-            ClaimingState.SetActive(false);
+            //ClaimingState.SetActive(false);
             HasClaimedState.SetActive(true);
 
             // Debug.Log("Ho gaya Mint 1");

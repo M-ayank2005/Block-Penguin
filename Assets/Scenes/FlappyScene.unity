@@ -860,7 +860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1109553058
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1077,6 +1077,7 @@ GameObject:
   - component: {fileID: 1482952503}
   - component: {fileID: 1482952502}
   - component: {fileID: 1482952501}
+  - component: {fileID: 1482952504}
   m_Layer: 5
   m_Name: ExitButtonFloppyBirb
   m_TagString: Untagged
@@ -1147,7 +1148,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1482952502}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1482952504}
+        m_TargetAssemblyTypeName: ExitGameButton, Assembly-CSharp
+        m_MethodName: ExitMiniGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1482952502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1161,7 +1174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.121568635, g: 0.03137255, b: 0.18431373, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1186,6 +1199,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482952499}
   m_CullTransparentMesh: 1
+--- !u!114 &1482952504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1482952499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb8814c085ad9204e887ae9f2bedc909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1604104305
 GameObject:
   m_ObjectHideFlags: 0
