@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Trigger : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame update        
 
     public GameObject button;
     void Start()

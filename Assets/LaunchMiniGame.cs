@@ -2,20 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LaunchMiniGame : MonoBehaviour
 {
-    // Path to the executable file of the mini-game
-    public string miniGameExecutablePath;
+    // Name of the scene containing the mini-game
+    public string miniGameSceneName;
 
+    // Method to launch the mini-game
     public void Launch()
     {
-        // Check if the path to the mini-game executable is not empty
-        if (!string.IsNullOrEmpty(miniGameExecutablePath))
-        {
-            // Launch the mini-game executable using the Process class
-            Process.Start(miniGameExecutablePath);
-        }
+        // Load the scene containing the mini-game
+        SceneManager.LoadScene(miniGameSceneName);
     }
 }
-
